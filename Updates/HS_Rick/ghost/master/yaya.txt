@@ -16,7 +16,7 @@ dic, xt_mouse.dic
 dic, xt_nameteach.dic
 dic, xt_string.dic
 dic, xt_word.dic
-dic, zzz_todo.dic
+
 
 
 //log, ayame.log
