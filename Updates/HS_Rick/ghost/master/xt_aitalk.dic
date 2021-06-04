@@ -1,0 +1,348 @@
+AiTalk
+{
+	if RAND(100) < communicateratio
+ 	{
+ 		StartCommunicate
+	}
+ 	else
+	{
+ 		if STRLEN(offscreen) == 0
+		{
+			if CHAIN.IDName == ""
+			{
+ 				lastTalk = RandomTalk
+			}
+			else
+			{
+				lastTalk = ChainTalk
+			}
+			lastTalk
+		}
+ 		else
+		{ 
+			OffscreenTalk(ANY(offscreen))
+ 		}
+	}
+}
+
+RandomTalk : nonoverlap
+{
+	"\0\s[0]Do you set reminders for yourself?\n\w8I always have sticky notes around so I dont forget things...\w8 I like to line them up neatly.\e"
+	"\0\s[0]It's nice to have company..\w8 I appreciate you letting me spend time with you,\w8 thank you.\e"
+	"\0\s[0](He hums a familiar tune.)\e"
+	"\0\s[0]I wonder how things are holding up back home....\w8 I do hope no one is inconvenienced by my absence..\e"
+	"\0\s[0]Here's a chain!\e:chain=achain"
+	"\0\s[0]Today is %(nowday). Have you marked it off on your calender yet?\e"
+	"\0\s[0]Ah, tomorrow is %(nowday('next')).... I still have to do.. \n\n(He trails off, looking thoughtful.)\e"
+	"\0\s[0]In two days it'll be %(nowday(weekday + 2)).. I always try to plan ahead so I dont end up unprepared....\e"
+	"\0\s[0]Yesterday was %(nowday('last'))..\w8 Were you able to get everything you wanted done?\e"
+	
+	
+	parallel Pool("Pool_Example","%(username != '')")
+	
+	//User Environment Ifs - Use as many of these as you like for dynamic dialogue (Note, if you'd like to make these Pools instead, I've included a file in the 000_Dev_Stuff folder with blank pools.)
+	//---Timeslots---
+	if timeslot == "earlymorning" //5am - 8am
+	{
+		if runtime[0] >= 3 //Been open for 3 hours or more, so the user has probably been up all night
+		{
+			"\0\s[0] Oh.. you're staying up pretty late, aren't you? \n Please do get some rest soon.. It won't do to be tired during the day..\e"
+		}
+		else //Probably just got up
+		{
+			"\0\s[0]It's rather early,\w5 dont you think? \w3\w3Though,\w3 you could probably get some extra work done..\nThat would be nice.. \w8\nBe sure to have breakfast though..\e"
+		}
+	}
+	if timeslot == "morning" //9am - 11am
+	{
+		"\0\s[0] Ah it's morning.. A good time to start your day off well.\w8\w3 Have you had breakfast yet? If not,\w5 try to be sure to.\n\w8 It's good to eat so you can have energy for the rest of your day.\e"
+	}
+	if timeslot == "lunch" //12pm - 2pm
+	{
+		"\0\s[0] The middle of the day is a good time to take a break,\w5 dont you think?\w8 At least a short one.. \nTo be honest though, I tend to find myself overworking a bit too, so I wouldnt blame you if you did the same... \w8\e"
+	}
+	if timeslot == "afternoon" //3pm - 5pm
+	{
+		"\0\s[0] The afternoon is a good time to start winding things down a bit.. \w8\w3You can still be productive, but try not to overwork yourself, okay %(username)?\e"
+	}
+	if timeslot == "evening" //6pm - 8pm
+	{
+		"\0\s[0] It's nearing time for dinner, isn't it...?\w8 I wonder what I should make..\nA nice beef stew would be filling,\w5\w5 I wonder if I have leftovers...\e"
+	}
+	if timeslot == "latenight" //9pm - 12am
+	{
+		"\0\s[0] Oh,\w5The moon's out now, isn't it?\w8\n I always found the moon very peaceful..\e"
+	}
+	if timeslot == "midnight" //1am - 4am
+	{
+		"\0\s[0] Do you work late into the night too?\w5\w5 I always find myself trying to keep up productivity,\w5 and before I know it,\w5 it's gotten past midnight.... (He yawns)\nTry to get some rest soon though, won't you?\w8\e"
+	}
+	
+	//---Days of the week---
+	if wd == "Sun"
+	{
+		
+	}
+	if wd == "Mon"
+	{
+		
+	}
+	if wd == "Tue"
+	{
+		
+	}
+	if wd == "Wed"
+	{
+		
+	}
+	if wd == "Thu"
+	{
+		
+	}
+	if wd == "Fri"
+	{
+		
+	}
+	if wd == "Sat"
+	{
+		
+	}
+	
+	//---Days in the month---
+	if day < 5 //4th and before, start of the month
+	{
+		
+	}
+	if day > 13 && day < 17 //14th-16th, halfway through
+	{
+		
+	}
+	if day > 26 //27th and after, end of the month
+	{
+		
+	}
+	
+	//---Months---
+	if month == 1
+	{
+		
+	}
+	if month == 2
+	{
+		
+	}
+	if month == 3 //Spring start Northern, Autumn start Southern
+	{
+		
+	}
+	if month == 4
+	{
+		
+	}
+	if month == 5
+	{
+		
+	}
+	if month == 6 //Summer start Northern, Winter start Southern
+	{
+		
+	}
+	if month == 7
+	{
+		
+	}
+	if month == 8
+	{
+		
+	}
+	if month == 9 //Autumn start Northern, Spring start Southern
+	{
+		
+	}
+	if month == 10
+	{
+		
+	}
+	if month == 11
+	{
+		
+	}
+	if month == 12 //Winter start Northern, Summer start Southern
+	{
+		
+	}
+	
+	//---Seasons---
+	if season == "Spring"
+	{
+		
+	}
+	if season == "Summer"
+	{
+		
+	}
+	if season == "Autumn"
+	{
+		
+	}
+	if season == "Winter"
+	{
+		
+	}
+	
+	//---Noticing and commenting on other ghosts---
+	//Remember that you have to check for the sakura name of another ghost, not the ghost name.
+	if "Girl" _in_ ghostexlist
+	{
+		"\0\s[0]Is your name really 'Girl'? How interesting.. \n\w8\w8Though I feel I shouldnt be too surprised.. \w8I used to know someone who just went by 'Yello' for a while.\e"
+	}
+}
+
+
+//-----------Pools-----------
+
+//Example of a pool. You can name pools whatever you like. I always start them with Pool_ so that it's clear what they are. They MUST have : array after the function name, or they won't work. I also recommend putting a comment with what if check activates this pool, so it's easy to remember later.
+Pool_Example : array //username != ""
+{
+	"\0\s[0]Say,\w5 %(username), \w8what kind of things do you do in your spare time?\n\w8\w8 I tend to find myself organizing things a bit or just cleaning up in general...\w8\w8 But a nice book is always a treat too.\e"
+	"\0\s[0]Hey, %(username)?\w8 How are you doing?\w8 Are you taking care of yourself?\e"
+	"\0\s[0]Do you like music, %(username)? What kind of music do you like?\e"
+	"\0\s[0]\e"
+	"\0\s[0]%(username)... It is a nice name,\w4 isnt it?\n\w8\w5 I know some names have meanings,\w5 I wonder what yours means..?\e"
+}
+
+//-----------Chains-----------
+
+//Example of a chain. The dialogues will play in order each time the ghost talks until it reaches chain=end.
+achain
+{{CHAIN
+	"\0\s[0]Here's another part of the chain!\e"
+	"\0\s[0]Here's a third part of the chain!\e"
+	"\0\s[0]Here's a fourth part of the chain!\e"
+	"\0\s[0]Here's the end of a chain!\e:chain=end"
+}}CHAIN
+
+
+//-----------Timekeeping systems and related dialogue-----------
+
+OnMinuteChange
+{
+	if minute == 0 //Top of the hour notifications
+	{
+		if hour == 0
+		{
+			AutoUpdates[1] = 0
+			if day == 1 && month == 1
+			{
+				"\0\s[0]Happy new year!\e"
+			}
+			else
+			{
+				"\0\s[0]It's midnight.\e"
+			}
+		}
+		elseif hour == 12
+		{
+			"\0\s[0]It's noon.\e"
+		}
+		else
+		{
+			"\0\s[0]It's %(hour12) o'clock.\e"
+		}
+	}
+	elseif ARRAYSIZE(offscreen) > 0 //If the ghost is off the screen, it will run the off screen dialogue every minute
+ 	{
+ 		OffscreenTalk
+	}
+	--
+	if AutoUpdates[0] == "On" && AutoUpdates[1] == 0 //Once a day the ghost will check for updates if the user has auto updates on
+	{
+		AutoUpdates[1] = 1
+		"\![updatebymyself,checkonly]"
+	}
+	
+}
+
+OnSecondChange
+{
+	if runtime[2] >= 59
+	{
+		runtime[2] = 0
+		runtime[1]++
+		if runtime[1] >= 59
+		{
+			runtime[1] = 0
+			runtime[0]++
+			totalhours++
+		}
+	}
+	else
+	{
+		runtime[2]++
+	}
+	if reference2 == 1 //This is for if your Sakura and Kero are overlapping. \4 will move the speaking character away from the other character.
+	{
+		"\0\s[0]Me and %(keroname) are overlapping.\4\e"
+	}
+	elseif ARRAYSIZE(waitingcommuS) > 0 && second % 5 == 0 //Every 5 seconds, check if the balloon is closed and a communication is waiting, and if so trigger a response
+	{
+		_b = BalloonCheck
+		if _b == 0; WaitingCommu
+	}
+}
+
+OnOffscreen
+{
+	//I've tinkered a lot with this function to get it working for multiple characters. If you need more than 2, just copy the format below very carefully, and make sure you increment the numbers. It's not perfect; if you have multiple characters off screen at once it might pick the wrong dialogues, but you can add more elseifs to handle those cases if you really want them.
+	offscreen = TOSTR(reference0)
+	CVSTR(reference0)
+	CVSTR(reference1)
+	
+	if "0" _in_ reference0 //Checks if the sakura was moved off screen
+	{
+		OffscreenTalk("0")
+	}
+	elseif "1" _in_ reference0 //Checks if the kero was moved off screen
+	{
+		OffscreenTalk("1")
+	}
+	
+	//Coming back on screen
+	elseif "0" _in_ reference1 //Checks if the sakura is no longer off screen
+	{
+		EndOffscreenTalk("0")
+	}
+	elseif "1" _in_ reference1 //Checks if the kero is no longer off screen
+	{
+		EndOffscreenTalk("1")
+	}
+}
+
+OffscreenTalk //Off the screen dialogue. Ctrl Shift F12 will bring characters back onto the screen. _argv[0] here contains the number of the character who is off screen, 0 for sakura, 1 for kero, 2 and up for extra chars
+{
+	if _argv[0] == "0" //If the sakura is off screen
+	{
+		"\0\s[0]I'm off the screen.\w8\w8 You can press Ctrl Shift F12 to bring me back.\e"
+	}
+	elseif _argv[0] == "1" //If the kero is off screen
+	{
+		"\0\s[0]The kero is off the screen.\w8\w8 You can press Ctrl Shift F12 to bring it back.\e"
+	}
+}
+
+EndOffscreenTalk //Being brought back on the screen. _argv[0] here contains the number of the character who was brought back on screen, 0 for sakura, 1 for kero, 2 and up for extra chars
+{
+	if _argv[0] == "0" //If the sakura was brought back on screen
+	{
+		"\0\s[0]I'm back!\e"
+	}
+	elseif _argv[0] == "1" //If the kero was brought back on screen
+	{
+		"\0\s[0]The kero is back!\e"
+	}
+}
+
+OnSurfaceRestore //OnSurfaceRestore happens around 30 seconds after the ghost's last dialogue. reference0 here stores the number of the previous surface, so you can have them comment when they change back if you like.
+{
+	"\1\s[-1]\0\s[0]\e"
+}
