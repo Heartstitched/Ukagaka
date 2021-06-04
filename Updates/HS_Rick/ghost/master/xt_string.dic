@@ -13,7 +13,7 @@ On_homeurl
 
 On_recommendrootbutton.caption //Change [Your Username] to your username, or change the whole caption to whatever you want. This is the top list of websites in the right click menu.
 {
-	"More from [Heartstitched]"
+	"More from Heartstitched"
 }
 
 On_sakura.recommendsites
