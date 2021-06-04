@@ -1,4 +1,5 @@
 /*This is a CSS comment! Anything between these tags will not be run and is for your reference. Everything in this file has to do with how the website looks; I've pointed out areas where you can pick text/background colors, etc. If you want to look into doing more specific effects, google is your best friend! You can also look at what's available at https://www.w3schools.com/ */
+/*Template version 1.0.1*/
 
 /*This affects every element on the site. You can change the font and font color here.*/
 *
@@ -53,6 +54,7 @@ a
     font-weight: bold;
 }
 
+/*Class for centering images*/
 .center
 {
     display: block;
@@ -60,9 +62,10 @@ a
     margin-right: auto;
     max-width: 100%;
     height: auto;
-    border-radius: 5px; /*If you want your images to be perfectly square, remove this bit of code*/
+    border-radius: 5px; /*If you want your images to be perfectly square, remove the border-radius bit*/
 }
 
+/*Classes for the download button*/
 .dlbutton
 {
     display: block;
@@ -78,6 +81,12 @@ a
 .dlbutton:hover
 {
     background-color: #cfcfcf;
+}
+
+/*This is for the webring, but you could use it for any center aligned text*/
+.centertext
+{
+	text-align: center;
 }
 
 .version
@@ -97,6 +106,6 @@ a
 .credit /*Please leave this credit as-is if you use the template as given! If you start making major changes, you can go ahead and get rid of it tbh. Everything I've done here is very basic HTML/CSS*/
 {
     text-align: center;
-    color: #c4c4c4;
+    color: #a4a4a4;
     font-size: 12px;
 }
